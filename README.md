@@ -19,19 +19,34 @@ Or install it yourself as:
 ## Usage
 
 1. Import gems
+
+```ruby
 require 'cachalot_client'
+```
 
 2. client generate
+
+```ruby
 client = CachalotClient::Client.new(cachalot_host, service_name, command, filedir)
+```
 
 3. Get result
+
+```ruby
 client.result #=> CachalotClient::Result
+```
 
 4. Get stdout
+
+```ruby
 result.stdout #=> "this is stdout"
+```
 
 5. Download result files
+
+```ruby
 result.data_download(dest) 
+```
 
 ## Development
 
