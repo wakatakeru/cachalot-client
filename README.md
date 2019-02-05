@@ -1,9 +1,5 @@
 # CachalotClient
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cachalot_client`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +18,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Import gems
+require 'cachalot_client'
+
+2. client generate
+client = CachalotClient::Client.new(cachalot_host, service_name, command, filedir)
+
+3. Get result
+client.result #=> CachalotClient::Result
+
+4. Get stdout
+result.stdout #=> "this is stdout"
+
+5. Download result files
+result.data_download(dest) 
 
 ## Development
 
