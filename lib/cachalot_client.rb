@@ -5,7 +5,7 @@ require 'open-uri'
 require "cachalot_client/version"
 
 module CachalotClient
-  SLEEP_TIME = 2
+  SLEEP_TIME = 0.1
   
   class Error < StandardError; end
   
@@ -74,13 +74,12 @@ module CachalotClient
 
         result = JSON.parse(res) if res != nil
         status = result["status"] if result != nil
-        
-        if status.include?("executed") || status.include?("infeasible") || status.include?("execute_failed")
-          break
-        end
+
+        next if status.include?("unexecuted") == true || status.include?("running") == true 
+        break
       end
 
-      result 
+      result
     end
     
     def data_tar(work_dir)
@@ -119,7 +118,7 @@ module CachalotClient
     end
     
     def data_download(filedir)
-      path = @result_data["result_files_path"]
+      path = URI.parse(@result_data["result_files_path"])
 
       filename = "result.tar"
       filepath = "#{filedir}/#{filename}"
