@@ -72,17 +72,12 @@ module CachalotClient
         req = Net::HTTP::Get.new(url.path)
         res = Net::HTTP.get(url)
 
-        p res
+        status = result["status"]
         
-        begin 
+        if status.include?("executed") || status.include?("infeasible") || status.include?("execute_failed")
           result = JSON.parse(res)
-        rescue
-          next
+          break
         end
-        
-        break if result["status"].include?("executed")
-        break if result["status"].include?("infeasible")
-        break if result["status"].include?("execute_failed")
       end
 
       result 
