@@ -123,11 +123,10 @@ module CachalotClient
       filename = "result.tar"
       filepath = "#{filedir}/#{filename}"
 
-      # open(path) do |file|
-      #   File.write(filepath, file.read)
-      # end
+      file = open(path)
+      File.write(filepath, file.read)
 
-      #system("cd #{filedir} && tar xvf #{filename}")
+      system("cd #{filedir} && tar xvf #{filename}")
     end
   end
 end
