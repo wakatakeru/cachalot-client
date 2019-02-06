@@ -116,6 +116,10 @@ module CachalotClient
     def stdout
       @result_data["result"]
     end
+
+    def download_path
+      @result_data["result_files_path"]      
+    end
     
     def data_download(filedir)
       path = URI.parse(@result_data["result_files_path"])
