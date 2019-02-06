@@ -127,7 +127,7 @@ module CachalotClient
         File.write(filepath, file.read)
       end
 
-      system("cd #{filedir} && tar xvf #{filename}")
+      #system("cd #{filedir} && tar xvf #{filename}")
     end
   end
 end
