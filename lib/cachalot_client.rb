@@ -123,7 +123,7 @@ module CachalotClient
       filename = "result.tar"
       filepath = "#{filedir}/#{filename}"
 
-      file = open(path)
+      file = OpenURI.open_uri(path)
       File.write(filepath, file.read)
 
       system("cd #{filedir} && tar xvf #{filename}")
